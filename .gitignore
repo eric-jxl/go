@@ -14,9 +14,6 @@ openerp-server.conf
 *.tx
 *.github
 /configs
-openerp-server.conf
-*.apk
-*.ipa
 *.exe
 # Binaries for programs and plugins
 *.exe~
