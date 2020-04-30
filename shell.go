@@ -2,17 +2,16 @@ package main
 
 import (
 	"fmt"
+	"os/exec"
+
 	//"os/exec"
 )
 
 func main() {
-	//cmd := exec.Command("touch", "test.txt")
-	//com := exec.Command("rm", "test.txt")
+	cmd := exec.Command("echo", "Hello World")
 	err := cmd.Run()
-	errs := com.Run()
 	if err != nil {
 		fmt.Println("failed:", err.Error())
-		fmt.Println("Failed", errs.Error())
 		return
 	}
 	fmt.Println("Exit!!")
