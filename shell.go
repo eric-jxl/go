@@ -3,8 +3,6 @@ package main
 import (
 	"fmt"
 	"os/exec"
-
-	//"os/exec"
 )
 
 func main() {
