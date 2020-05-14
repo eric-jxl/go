@@ -1,0 +1,27 @@
+/.settings
+/.idea
+/.git
+/dbbackup/*
+/configs/*
+*.pyc
+/.project
+/.pydevproject
+*.DS_Store
+*.db
+*.apk
+*.ipa
+*.tx
+*.github
+/configs
+# Binaries for programs and plugins
+*.exe~
+*.dll
+*.so
+*.dylib
+*.exec
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
