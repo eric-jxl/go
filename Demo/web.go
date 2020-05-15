@@ -8,7 +8,7 @@ import (
 
 func hander(Writer http.ResponseWriter,request *http.Request)  {
 	fmt.Fprintln(Writer,"<h1>Hello World!</h1>")
-	fmt.Fprintf(Writer, "<h1>Hi there, I love %s!</h1>", request.URL.Path[1:])
+	fmt.Fprintf(Writer, "<h2>Hi there, I love %s!</h2>", request.URL.Path[1:])
 	log.Print(request.URL.Path[1:])
 }
 
