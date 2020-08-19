@@ -6,12 +6,12 @@ import (
 )
 
 func main() {
-	cmd := exec.Command("echo", "Hello World")
+	cmd := exec.Command("/bin/bash", "-c", `nohup /Applications/WeChat.app/Contents/MacOS/WeChat > /dev/null 2>&1 &Killall Terminal
+`)
 	err := cmd.Run()
 	if err != nil {
 		fmt.Println("failed:", err.Error())
 		return
 	}
-	fmt.Println("Exit!!")
 	fmt.Println("Continue!")
 }
