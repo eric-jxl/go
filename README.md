@@ -1,5 +1,5 @@
 # Go
-``Go 1.13.4 darwin/amd64]``
+``Go 1.13.4 darwin/amd64``
 
 ```Project for golang```
 ````
