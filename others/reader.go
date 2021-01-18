@@ -1,4 +1,4 @@
-package ipdb
+package main
 
 import (
 	"encoding/binary"
