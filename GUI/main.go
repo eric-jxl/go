@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/andlabs/ui"
-	"github.com/andlabs/ui/winmanifest"
+	_"github.com/andlabs/ui/winmanifest"
 )
 
 func main() {
