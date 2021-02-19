@@ -69,7 +69,7 @@ func init() {
 func (m rssMatcher) Search(feed *search.Feed, searchTerm string) ([]*search.Result, error) {
 	var results []*search.Result
 
-	log.Printf("Search Feed Type[%s] Site[%s] For URI[%s]\n", feed.Type, feed.Name, feed.URI)
+	log.Printf("Search Feed Type[%s] Site[%s] For URI[%s]\n", feed.Type, feed.Name, feed.URL)
 
 	// Retrieve the data to search.
 	document, err := m.retrieve(feed)
@@ -112,12 +112,12 @@ func (m rssMatcher) Search(feed *search.Feed, searchTerm string) ([]*search.Resu
 
 // retrieve performs a HTTP Get request for the rss feed and decodes the results.
 func (m rssMatcher) retrieve(feed *search.Feed) (*rssDocument, error) {
-	if feed.URI == "" {
+	if feed.URL == "" {
 		return nil, errors.New("No rss feed uri provided")
 	}
 
 	// Retrieve the rss feed document from the web.
-	resp, err := http.Get(feed.URI)
+	resp, err := http.Get(feed.URL)
 	if err != nil {
 		return nil, err
 	}
