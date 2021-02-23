@@ -11,6 +11,7 @@
 *.apk
 *.ipa
 *.tx
+*.vscode
 *.github
 /configs
 # Binaries for programs and plugins
