@@ -1,5 +1,6 @@
 /.settings
 /.idea
+*.idea
 /.git
 /dbbackup/*
 /configs/*
