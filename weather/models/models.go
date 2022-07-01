@@ -6,8 +6,8 @@ type RespData struct {
 	Week string `json:"week"`
 	Temperature string `json:"temperature"`
 	Weather string `json:"weather"`
-	WeatherIcon string `json:"weather_icon"`
 	Wind string `json:"wind"`
+	WeatherIcon string `json:"weather_icon"`
 }
 
 
