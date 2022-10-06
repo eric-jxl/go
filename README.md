@@ -9,4 +9,4 @@ Develop Branch for Code
 ````
 
 -----------------------
-:coffee: :pizza: :basketball:
+:coffee: :pizza: :basketball: :lemon: :apple: :orange:
