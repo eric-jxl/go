@@ -58,7 +58,7 @@ func request_jdApi(phone string) error {
 	return nil
 }
 func main() {
-	phone := flag.String("p phone", "", "Usage phone number")
+	phone := flag.String("p", "", "Usage phone number")
 	flag.Parse()
 	request_jdApi(*phone)
 }
