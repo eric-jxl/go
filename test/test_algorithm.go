@@ -17,6 +17,7 @@ func Fib(n int) int {
 	}
 }
 
+//并发请求API
 func syncMux(){
 	var wg sync.WaitGroup
 	var urls = []string{

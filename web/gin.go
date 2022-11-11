@@ -9,11 +9,13 @@ import (
 )
 func formatAsDate(t time.Time) string {
 	year, month, day := t.Date()
-	return fmt.Sprintf("%d/%02d/%02d", year, month, day)
+	hour,min,sec := t.Clock()
+	return fmt.Sprintf("%d/%02d/%02d %d:%d:%02d", year, month, day,hour,min,sec)
 }
 
 func main() {
 	r := gin.Default()
+	r.SetTrustedProxies([]string{"192.168.1.15:7890"})
 	r.GET("/ping", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
 			"message": "pong",
@@ -31,8 +33,8 @@ func main() {
 		"formatAsDate": formatAsDate,
 	})
 	//r.Delims("{[{", "}]}") //自定义界定符
-	r.LoadHTMLGlob("templates/*")
-	//r.LoadHTMLFiles("templates/index.tmpl") //等价于
+	//r.LoadHTMLGlob("templates/*")
+	r.LoadHTMLFiles("templates/index.tmpl") //等价于
 	r.GET("/", func(c *gin.Context) {
 		c.HTML(http.StatusOK,"index.tmpl", gin.H{
 			"title":"Eric",
