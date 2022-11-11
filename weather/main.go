@@ -6,11 +6,16 @@ import (
 	"fmt"
 )
 
-func main() {
-	s := flag.String("u","上海","输入要查询天气的城市!")
+var S *string
+
+func init(){
+	S = flag.String("u","上海","输入要查询天气的城市!")
 	flag.Parse()
+}
+func main() {
+
 	local, _ := app.New()
-	resp, err := local.GetCityWeather(*s)
+	resp, err := local.GetCityWeather(*S)
 	if err != nil {
 		fmt.Println(err)
 		return
