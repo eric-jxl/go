@@ -10,7 +10,7 @@ func main() {
 `)
 	err := cmd.Run()
 	if err != nil {
-		fmt.Println("failed:", err.Error())
+		fmt.Printf("failed:%s", err.Error())
 		return
 	}
 	fmt.Println("Continue!")
