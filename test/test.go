@@ -11,6 +11,7 @@ package main
 import "C"
 import (
 	Ca "Workspace/gocache"
+	unit "Workspace/test/unittest"
 	"crypto/md5"
 	"fmt"
 	"io"
@@ -130,6 +131,17 @@ func testCase() {
 	select {}
 }
 
+func fibTest()  {
+	start := time.Now()
+	result := unit.Fib(40)
+	end := time.Now()
+	timeDiff := end.Sub(start).Seconds()
+	fmt.Printf("斐切拉波数列第40项的值为：%d,用时:%.2f \n", result,timeDiff)
+	h :=time.Now()
+	unit.SyncMux()
+	fmt.Printf("APi调用时长%.2f\n",time.Since(h).Seconds())
+}
+
 func main() {
 
 	//c := [...]int{4, 5, 6}
@@ -143,11 +155,11 @@ func main() {
 	//fmt.Println(KB);fmt.Println(MB);fmt.Println(GB);fmt.Println(TB);fmt.Println(PB)
 	//md5encrypt()
 
-	go routine()
-	testCase()
-	md5encrypt()
+	//go routine()
+	//testCase()
+	//md5encrypt()
 
 	fmt.Println(C.sum(1, 2))
 	fmt.Println(C.abs(-2))
-
+	fibTest()
 }

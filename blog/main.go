@@ -1,7 +1,7 @@
 package main
 
 import (
-	"blog/search"
+	"Workspace/blog/search"
 	"log"
 	"os"
 )

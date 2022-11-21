@@ -1,4 +1,4 @@
-package main
+package unittest
 
 import (
 	"fmt"
@@ -6,7 +6,7 @@ import (
 	"os/exec"
 )
 
-func main() {
+func getIp() {
 	var ip, whoami []byte
 	var err error
 	var cmd *exec.Cmd
