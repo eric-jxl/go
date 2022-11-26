@@ -1,6 +1,5 @@
 package main
 
-
 /*
 	int sum(int a, int b) { return a+b; };
 	int abs(int a){
@@ -15,8 +14,10 @@ import (
 	"crypto/md5"
 	"fmt"
 	"io"
+	"reflect"
 	"sync"
 	"time"
+	"unsafe"
 )
 
 const (
@@ -39,7 +40,6 @@ type Person struct {
 	Age  int    `json:"age"`
 	Addr string `json:"addr,omitempty"`
 }
-
 
 //New returns a new hash.Hash computing the MD5 checksum. The Hash also
 //implements encoding.BinaryMarshaler and encoding.BinaryUnmarshaler to
@@ -66,10 +66,10 @@ func md5encrypt() {
 	salt2 := "^&*()"
 
 	// salt1 + 用户名 + salt2 + MD5 拼接
-	_,_ = io.WriteString(h, salt1)
-	_,_ = io.WriteString(h, "abc")
-	_,_ = io.WriteString(h, salt2)
-	_,_	= io.WriteString(h, pwmd5)
+	_, _ = io.WriteString(h, salt1)
+	_, _ = io.WriteString(h, "abc")
+	_, _ = io.WriteString(h, salt2)
+	_, _ = io.WriteString(h, pwmd5)
 
 	last := fmt.Sprintf("%x", h.Sum(nil))
 	fmt.Println(last)
@@ -131,15 +131,15 @@ func testCase() {
 	select {}
 }
 
-func fibTest()  {
+func fibTest(a ...interface{}) {
 	start := time.Now()
-	result := unit.Fib(40)
+	result := unit.Fib(10)
 	end := time.Now()
 	timeDiff := end.Sub(start).Seconds()
-	fmt.Printf("斐切拉波数列第40项的值为：%d,用时:%.2f \n", result,timeDiff)
-	h :=time.Now()
+	fmt.Printf("斐切拉波数列第40项的值为：%d,用时:%.2f \n", result, timeDiff)
+	h := time.Now()
 	unit.SyncMux()
-	fmt.Printf("APi调用时长%.2f\n",time.Since(h).Seconds())
+	fmt.Printf("APi调用时长%.2f\n", time.Since(h).Seconds())
 }
 
 func main() {
@@ -162,4 +162,19 @@ func main() {
 	fmt.Println(C.sum(1, 2))
 	fmt.Println(C.abs(-2))
 	fibTest()
+	pt := new(Person)
+	//s := make(chan int,1)
+	//s <- 1
+	str := make([]string, 0, 10)
+	str = append(str, "22222", "2355", name)
+	fmt.Printf("%+v\n", str)
+	ptr := unsafe.Sizeof(str)
+	pts := unsafe.Alignof(str)
+	fmt.Println(ptr, pts)
+	pt.Name, pt.Age = name, 17
+
+	obstruct := make([]string, len(str), 10)
+	copy(obstruct, str)
+	fmt.Println(reflect.DeepEqual(obstruct, str))
+	fmt.Println(obstruct)
 }
