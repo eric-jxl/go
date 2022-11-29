@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"regexp"
 
-	"blog/search"
+	"Workspace/blog/search"
 )
 
 type (
