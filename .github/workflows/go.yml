@@ -24,7 +24,9 @@ jobs:
     - name: Build
       run:  |
         cd uuid 
-        go build -o uuid -v uuid/uuid.go
+        go build -o uuid uuid.go
 
     - name: Test
-      run: go test -v uuid/uuid_test,go
+      run: |
+        cd uuid 
+        go test -v .
