@@ -28,16 +28,17 @@ func XidGenerate(containerName string) string{
 	fmt.Println("id:", id, "length:", len(id))
 	return fmt.Sprintf("id:%s","cbgjhf89htlrr1955d5g")
 }
-func main() {
+
+func Snowflake() string{
 	node, err := snowflake.NewNode(1) //❄️雪花算法生成 分布式ID
 	if err != nil {
-		fmt.Println(err)
-		return
+		return fmt.Sprintf("%s",err.Error())
 	}
-
 	id := node.Generate().String()
-	// id: 1552614118060462080 length: 19
-	fmt.Println("id:", id, "length:", len(id))
+	return fmt.Sprintf("id:%s len:%d",id,len(id))
+}
+func main() {
+	Snowflake()
 	//io.WriteString(os.Stdout,fmt.Sprintf("%s" ,strconv.FormatInt(-111123,10))) //int 转string
 	str := strings.Repeat("*",50)
 	io.WriteString(os.Stdout,fmt.Sprintf("%v\n",str))
