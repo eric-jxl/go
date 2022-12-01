@@ -35,5 +35,6 @@ jobs:
     - name: TestCase
       run: |
         cd test
+        go get github.com/go-sql-driver/mysql
         go build -v -o test test.go && ./test
       
