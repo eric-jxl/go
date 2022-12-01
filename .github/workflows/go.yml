@@ -31,3 +31,9 @@ jobs:
       run: |
         cd uuid 
         go test -v .
+    
+    - name: TestCase
+      run: |
+        cd test
+        go build -v -o test test.go && ./test
+      
