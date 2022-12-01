@@ -14,10 +14,8 @@ import (
 	"crypto/md5"
 	"fmt"
 	"io"
-	"reflect"
 	"sync"
 	"time"
-	"unsafe"
 )
 
 const (
@@ -159,22 +157,27 @@ func main() {
 	//testCase()
 	//md5encrypt()
 
-	fmt.Println(C.sum(1, 2))
-	fmt.Println(C.abs(-2))
-	fibTest()
-	pt := new(Person)
-	//s := make(chan int,1)
-	//s <- 1
-	str := make([]string, 0, 10)
-	str = append(str, "22222", "2355", name)
-	fmt.Printf("%+v\n", str)
-	ptr := unsafe.Sizeof(str)
-	pts := unsafe.Alignof(str)
-	fmt.Println(ptr, pts)
-	pt.Name, pt.Age = name, 17
-
-	obstruct := make([]string, len(str), 10)
-	copy(obstruct, str)
-	fmt.Println(reflect.DeepEqual(obstruct, str))
-	fmt.Println(obstruct)
+	//fmt.Println(C.sum(1, 2))
+	//fmt.Println(C.abs(-2))
+	//fibTest()
+	//pt := new(Person)
+	////s := make(chan int,1)
+	////s <- 1
+	//str := make([]string, 0, 10)
+	//str = append(str, "22222", "2355", name)
+	//fmt.Printf("%+v\n", str)
+	//ptr := unsafe.Sizeof(str)
+	//pts := unsafe.Alignof(str)
+	//fmt.Println(ptr, pts)
+	//pt.Name, pt.Age = name, 17
+	//
+	//obstruct := make([]string, len(str), 10)
+	//copy(obstruct, str)
+	//fmt.Println(reflect.DeepEqual(obstruct, str))
+	//fmt.Println(obstruct)
+	//fmt.Println(unit.ConnectMysql())
+	//unit.CpuProfile()
+	//unit.BufferWFile("Eric\n","a.txt")
+	var ct = []string{"AAAAA\n","AAAAA\n","AAAAA\n"}
+	unit.BufferWFile(ct,"a.txt")
 }
