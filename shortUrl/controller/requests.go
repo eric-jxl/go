@@ -1,10 +1,11 @@
 package controller
 
 import (
-	"Workspace/shortUrl/models"
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
+
+	"github.com/eric-jxl/go/shortUrl/models"
 )
 
 func GenShortUrl(url string) (*models.Response,error) {

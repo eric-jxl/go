@@ -1,4 +1,4 @@
-module Workspace
+module github.com/eric-jxl/go
 
 go 1.16
 

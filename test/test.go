@@ -9,13 +9,14 @@ package main
 */
 import "C"
 import (
-	Ca "Workspace/gocache"
-	unit "Workspace/test/unittest"
 	"crypto/md5"
 	"fmt"
 	"io"
 	"sync"
 	"time"
+
+	Ca "github.com/eric-jxl/go/gocache"
+	unit "github.com/eric-jxl/go/test/unittest"
 )
 
 const (
