@@ -1,9 +1,10 @@
 package main
 
 import (
-	"github.com/eric-jxl/go/blog/search"
 	"log"
 	"os"
+
+	"github.com/eric-jxl/go/blog/search"
 )
 
 func init() {
