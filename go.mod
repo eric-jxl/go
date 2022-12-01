@@ -12,4 +12,3 @@ require (
 	github.com/urfave/cli/v2 v2.23.5
 )
 
-replace github.com/eric-jxl/go => github.com/eric-jxl/go v1.4
