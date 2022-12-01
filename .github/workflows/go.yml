@@ -23,7 +23,7 @@ jobs:
 
     - name: Build
       run:  |
-        cd uuid 
+        cd uuid && go mod tidy
         go build -v -o uuid uuid.go
         ./uuid
 
@@ -35,6 +35,5 @@ jobs:
     - name: TestCase
       run: |
         cd test
-        go get github.com/go-sql-driver/mysql
         go build -v -o test test.go && ./test
       
