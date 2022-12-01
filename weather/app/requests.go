@@ -1,11 +1,12 @@
 package app
 
 import (
-	"Workspace/weather/models"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"net/http"
+
+	"github.com/eric-jxl/go/weather/models"
 )
 
 type ShortDao struct{}

@@ -1,4 +1,4 @@
-module Workspace/web
+module github.com/eric-jxl/go/web
 
 go 1.16
 

@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"regexp"
 
-	"Workspace/blog/search"
+	"github.com/eric-jxl/go/blog/search"
 )
 
 type (

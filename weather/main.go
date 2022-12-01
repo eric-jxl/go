@@ -1,9 +1,10 @@
 package main
 
 import (
-	"Workspace/weather/app"
 	"flag"
 	"fmt"
+
+	"github.com/eric-jxl/go/weather/app"
 )
 
 var S *string

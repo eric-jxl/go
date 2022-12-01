@@ -1,9 +1,10 @@
 package main
 
 import (
-	"Workspace/shortUrl/controller"
 	"flag"
 	"fmt"
+
+	"github.com/eric-jxl/go/shortUrl/controller"
 )
 
 func main() {
