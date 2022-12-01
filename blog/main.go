@@ -1,7 +1,7 @@
 package main
 
 import (
-	"Workspace/blog/search"
+	"github.com/eric-jxl/go/blog/search"
 	"log"
 	"os"
 )
