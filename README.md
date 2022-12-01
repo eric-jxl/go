@@ -9,7 +9,8 @@
 
 ***
 
-###go build 除了"-o"参数，还有一些其他参数
+
+### go build 除了"-o"参数，还有一些其他参数
 
 
 |commands|Usage|
@@ -32,7 +33,7 @@
 |`-tags`| *tag list* 设置在编译的时候可以适配的那些tag，详细的tag限制参考里面的 Build Constraints|
 
 
-- ###**go build** 移除路径信息
+### **go build** 移除路径信息
 ```shell
 CGO_ENABLED=0 go build -v -a -ldflags '-s -w' \
 -gcflags="all=-trimpath=${PWD}" \
@@ -40,14 +41,14 @@ CGO_ENABLED=0 go build -v -a -ldflags '-s -w' \
 -o ./main main.go
 ```
 
-###**Go代码编译成动态链接库**
+### **Go代码编译成动态链接库**
 ```shell
 go build -buildmode=c-shared -o xx.so main.go
 ```
 
-###**go clean** 命令用于删除执行其他命令时产生的文件或目录
+### **go clean** 命令用于删除执行其他命令时产生的文件或目录
 
-###**go mod**
+### **go mod**
 
 ```markdown
 download   下载依赖包
@@ -59,7 +60,7 @@ graph  打印依赖图
 ```
 
 
-###**go bug** 
+### **go bug** 
 `输入此命名后会直接打开默认浏览器，显示go的github页面进行bug报告，并会自动添加系统的信息。`
 
 `//go:embed` 打包静态资源
