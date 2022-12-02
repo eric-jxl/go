@@ -19,11 +19,12 @@ jobs:
     - name: Set up Go
       uses: actions/setup-go@v3
       with:
-        go-version: 1.18
+        go-version: 1.16.x
 
     - name: Build
       run:  |
         cd uuid && go mod tidy
+        go get .
         go build -v -o uuid uuid.go
         ./uuid
 
