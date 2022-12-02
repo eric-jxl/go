@@ -3,11 +3,12 @@ package main
 import (
 	"crypto/md5"
 	"fmt"
-	"github.com/bwmarrin/snowflake"
-	"github.com/rs/xid"
 	"io"
 	"os"
 	"strings"
+
+	"github.com/bwmarrin/snowflake"
+	"github.com/rs/xid"
 )
 
 
