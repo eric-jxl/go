@@ -10,7 +10,7 @@
 ***
 
 
-### go build 除了"-o"参数，还有一些其他参数
+* ### go build
 
 
 |commands|Usage|
