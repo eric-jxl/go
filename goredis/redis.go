@@ -30,7 +30,6 @@ func InitRedis() *redis.Client{
 	return rdb
 }
 
-// Lock
 func Lock(key string) bool {
 	mutex.Lock()
 	defer mutex.Unlock()
