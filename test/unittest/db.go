@@ -3,10 +3,11 @@ package unittest
 import (
 	"database/sql"
 	"fmt"
+
 	_ "github.com/go-sql-driver/mysql"
 )
 
-// ConnectMysql() Mysql Select data
+// ConnectMysql  Mysql Select data
 func ConnectMysql() string {
 	db, _ := sql.Open("mysql", "root:root@tcp(localhost:3306)/migu")
 	db.SetConnMaxLifetime(10)
