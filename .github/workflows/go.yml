@@ -26,15 +26,14 @@ jobs:
         cd uuid && go mod tidy
         go get .
         go build -v -o uuid uuid.go
-        ./uuid
 
     - name: Test
       run: |
-        cd uuid 
+        cd uuid
         go test -v .
-    
+
     - name: TestCase
       run: |
         cd test
         go build -v -o test test.go && ./test
-      
+
