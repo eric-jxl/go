@@ -12,6 +12,7 @@ import (
 	"crypto/md5"
 	"fmt"
 	"io"
+	"sort"
 	"sync"
 	"time"
 
@@ -179,6 +180,34 @@ func main() {
 	//fmt.Println(unit.ConnectMysql())
 	//unit.CpuProfile()
 	//unit.BufferWFile("Eric\n","a.txt")
-	var ct = []string{"AAAAA\n","AAAAA\n","AAAAA\n"}
-	unit.BufferWFile(ct,"a.txt")
+	//var ct = []string{"AAAAA\n","AAAAA\n","AAAAA\n"}
+	//unit.BufferWFile(ct,"a.txt")
+	source := []string{"Apple","Orange","Plum","Banana","Grape"}
+	sort.Strings(source)
+	slice := source[2:3:3]
+	slice= append( slice,"Kiwi")
+	//fmt.Println(append(source,slice...))
+	//fmt.Println(removeDuplicateElement(source))
+	array :=[3] *string{new(string),new(string),new(string)}
+	*array[0] = "Red"
+	//fmt.Println(*array[0])
+	a := make(chan int,10)
+	a <- 10
+	defer close(a)
+	fmt.Printf("%v\n",<-a)
+
+}
+
+
+//removeDuplicateElement：删除切片重复元素
+func removeDuplicateElement(elements []string) []string {
+	result := make([]string, 0, len(elements))
+	temp := map[string]struct{}{}
+	for _, item := range elements {
+		if _, ok := temp[item]; !ok {
+			temp[item] = struct{}{}
+			result = append(result, item)
+		}
+	}
+	return result
 }
