@@ -6,7 +6,7 @@ import (
 	"os/exec"
 )
 
-func getIp() {
+func GetIp() {
 	var ip, whoami []byte
 	var err error
 	var cmd *exec.Cmd
