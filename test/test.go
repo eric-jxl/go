@@ -182,6 +182,7 @@ func main() {
 	//unit.BufferWFile("Eric\n","a.txt")
 	//var ct = []string{"AAAAA\n","AAAAA\n","AAAAA\n"}
 	//unit.BufferWFile(ct,"a.txt")
+	unit.GetIp()
 	source := []string{"Apple","Orange","Plum","Banana","Grape"}
 	sort.Strings(source)
 	slice := source[2:3:3]
@@ -190,7 +191,7 @@ func main() {
 	//fmt.Println(removeDuplicateElement(source))
 	array :=[3] *string{new(string),new(string),new(string)}
 	*array[0] = "Red"
-	//fmt.Println(*array[0])
+	fmt.Println(*array[0])
 	a := make(chan int,10)
 	a <- 10
 	defer close(a)

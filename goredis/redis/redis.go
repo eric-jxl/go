@@ -1,4 +1,4 @@
-package goredis
+package redis
 
 import (
 	"context"
