@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	for i := 1; i <= 9; i++ {
@@ -19,5 +21,4 @@ func main() {
 		}
 		fmt.Println()
 	}
-
 }
