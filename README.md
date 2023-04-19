@@ -67,3 +67,9 @@ graph  打印依赖图
 
 ***
 :coffee: :pizza: :basketball: :lemon: :apple: :orange:
+
+## 鸣谢
+
+特别感谢 [JetBrains](https://www.jetbrains.com/) 为开源项目提供免费的 [Goland](https://www.jetbrains.com/go/) 授权
+
+![Goland](https://resources.jetbrains.com/storage/products/company/brand/logos/GoLand_icon.svg?_gl=1*a5x9r3*_ga*NzI3Njc2MDA2LjE2ODE0MDE2NDc.*_ga_9J976DJZ68*MTY4MTg2NzY1Mi4yLjEuMTY4MTg3MTU3OS4zOS4wLjA.)
