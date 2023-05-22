@@ -19,7 +19,7 @@ func formatAsDate(t time.Time) string {
 func main() {
 	r := gin.Default()
 	r.Use(response.Exception())
-	r.SetTrustedProxies([]string{"192.168.1.15:7890"})
+	_ = r.SetTrustedProxies([]string{"192.168.1.15:7890"})
 	r.GET("/ping", func(c *gin.Context) {
 		data := "Ping"
 		response.Success(c, data)
@@ -40,10 +40,10 @@ func main() {
 	r.LoadHTMLGlob("templates/*")
 	//r.LoadHTMLFiles("templates/index.tmpl") //等价于
 	r.GET("/", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "index.html", gin.H{
+		c.HTML(http.StatusOK, "index.tmpl", gin.H{
 			"title": "Eric",
 			"Unix":  time.Now(),
 		})
 	})
-	r.Run(":8888") // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
+	_ = r.Run(":8888") // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 }
