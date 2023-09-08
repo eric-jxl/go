@@ -30,17 +30,6 @@ type PhoneStruct struct {
 	RequestId string `json:"requestId"`
 }
 
-func requests(phonenum string) (string, error) {
-	url := fmt.Sprintf("https://www.baifubao.com/callback?cmd=1059&callback=phone&phone=%s", phonenum)
-	resp, err := http.Post(url, "application/json", nil)
-	if err != nil {
-		return "", err
-	}
-	defer resp.Body.Close()
-	bd, _ := ioutil.ReadAll(resp.Body)
-	return string(bd), nil
-}
-
 func request_jdApi(phone string) error {
 	url := fmt.Sprintf("https://way.jd.com/jisuapi/query4?shouji=%s&appkey=%s", phone, appKey)
 	resp, err := http.Post(url, "application/json", nil)
