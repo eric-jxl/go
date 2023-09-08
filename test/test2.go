@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"sync"
 	"sync/atomic"
 	"time"
 )
@@ -18,6 +19,7 @@ func main() {
 		fmt.Printf("An error occurred: %s\n", err.Error())
 	})
 	atom()
+	Mutex()
 
 }
 
@@ -49,4 +51,28 @@ func atom() {
 	// Wait for all goroutines to finish
 	time.Sleep(time.Second)
 	fmt.Println(count) // Output: 100
+}
+
+var sum int
+var mu sync.Mutex
+
+func add() {
+	mu.Lock()
+	sum++
+	mu.Unlock()
+}
+
+func Mutex() {
+	var wg sync.WaitGroup
+	cond := sync.NewCond(&sync.Mutex{})
+	cond.Signal()
+	wg.Add(1000)
+	for i := 0; i < 1000; i++ {
+		go func() {
+			add()
+			wg.Done()
+		}()
+	}
+	wg.Wait()
+	fmt.Println(sum)
 }

@@ -9,19 +9,17 @@ import (
 
 var S *string
 
-func init(){
-	S = flag.String("u","上海","输入要查询天气的城市!")
+func init() {
+	S = flag.String("u", "苏州", "输入要查询天气的城市!")
 	flag.Parse()
 }
 func main() {
-
 	local, _ := app.New()
 	resp, err := local.GetCityWeather(*S)
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
-	for _,v := range resp.Data{
-		fmt.Println(v)
-	}
+
+	fmt.Printf("%s\n", resp)
 }
