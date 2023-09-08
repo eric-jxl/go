@@ -17,9 +17,10 @@ func formatAsDate(t time.Time) string {
 }
 
 func main() {
+	//r := gin.New()
 	r := gin.Default()
 	r.Use(response.Exception())
-	_ = r.SetTrustedProxies([]string{"192.168.1.15:7890"})
+	//_ = r.SetTrustedProxies([]string{"192.168.1.15:7890"})
 	r.GET("/ping", func(c *gin.Context) {
 		data := "Ping"
 		response.Success(c, data)
