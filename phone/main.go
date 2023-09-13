@@ -9,7 +9,7 @@ import (
 	"net/http"
 )
 
-const appKey = "e6a0d40abd02adbeb1105c4d757a6284"
+const appKey = ""
 
 type PhoneStruct struct {
 	Code   string `json:"code"`
@@ -28,17 +28,6 @@ type PhoneStruct struct {
 		} `json:"result"`
 	} `json:"result"`
 	RequestId string `json:"requestId"`
-}
-
-func requests(phonenum string) (string, error) {
-	url := fmt.Sprintf("https://www.baifubao.com/callback?cmd=1059&callback=phone&phone=%s", phonenum)
-	resp, err := http.Post(url, "application/json", nil)
-	if err != nil {
-		return "", err
-	}
-	defer resp.Body.Close()
-	bd, _ := ioutil.ReadAll(resp.Body)
-	return string(bd), nil
 }
 
 func request_jdApi(phone string) error {

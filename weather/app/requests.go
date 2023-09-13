@@ -1,6 +1,7 @@
 package app
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
@@ -15,23 +16,34 @@ func New() (*ShortDao, error) {
 	return &ShortDao{}, nil
 }
 
-// GetCityWeather 获取目标未来一周的城市天气
-func (dao *ShortDao) GetCityWeather(location string) (*models.Response, error) {
-	var urls = fmt.Sprintf("https://api.66mz8.com/api/weather.php?location=%s",location)
+// GetCityWeather 获取目标城市天气
+// city 城市编码
+func (dao *ShortDao) GetCityWeather(location string) (string, error) {
+	var key = "swww" //高德地图key密钥
+	var urls = fmt.Sprintf("https://restapi.amap.com/v3/weather/weatherInfo?key=%s&output=json&city=%s", key, location)
 	resp, err := http.Get(urls)
 	if err != nil {
-		return nil, err
+		return "nil", err
 	}
 
+	// another Way To Write
+	//req, err := http.NewRequest("GET", urls, nil)
+	//req.Header.Set("Content-Type", "application/json")
+	//client := &http.Client{}
+	//resp, err := client.Do(req)
+
 	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		return nil, nil
-	}
-	var response models.Response
+	body, _ := ioutil.ReadAll(resp.Body)
+
+	var response models.AmapWeather
 	err = json.Unmarshal(body, &response)
+
+	res, _ := json.Marshal(response)
+	var out bytes.Buffer
+	err = json.Indent(&out, res, " ", "\t")
+
 	if err != nil {
-		return nil, err
+		return "nil", err
 	}
-	return &response, nil
+	return out.String(), nil
 }
