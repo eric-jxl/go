@@ -9,7 +9,7 @@ import (
 	"net/http"
 )
 
-const appKey = "e6a0d40abd02adbeb1105c4d757a6284"
+const appKey = ""
 
 type PhoneStruct struct {
 	Code   string `json:"code"`
