@@ -29,9 +29,9 @@ func TestXidGenerate(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := XidGenerate(tt.containerName)
+			got := GenerateXid(tt.containerName)
 			if got != "" {
-				t.Logf("XidGenerate() = %v ,Len:%d", got,len(got))
+				t.Logf("XidGenerate() = %v ,Len:%d", got, len(got))
 			}
 		})
 	}
