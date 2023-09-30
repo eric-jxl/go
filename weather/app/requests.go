@@ -29,8 +29,7 @@ func (dao *ShortDao) GetCityWeather(location string) (string, error) {
 	// another Way To Write
 	//req, err := http.NewRequest("GET", urls, nil)
 	//req.Header.Set("Content-Type", "application/json")
-	//client := &http.Client{}
-	//resp, err := client.Do(req)
+	//resp, err := http.DefaultClient.Do(req)
 
 	defer resp.Body.Close()
 	body, _ := ioutil.ReadAll(resp.Body)
