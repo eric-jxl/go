@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 
 	"github.com/eric-jxl/go/weather/models"
@@ -32,7 +32,7 @@ func (dao *ShortDao) GetCityWeather(location string) (string, error) {
 	//resp, err := http.DefaultClient.Do(req)
 
 	defer resp.Body.Close()
-	body, _ := ioutil.ReadAll(resp.Body)
+	body, _ := io.ReadAll(resp.Body)
 	var response models.AmapWeather
 	err = json.Unmarshal(body, &response)
 	res, _ := json.Marshal(response.Lives)
