@@ -15,5 +15,5 @@ func main() {
 		fmt.Println(fmt.Errorf("%s", resp.Msg))
 		return
 	}
-	fmt.Printf("short_url: %s\n", resp.Ae_url)
+	fmt.Printf("short_url: %s\n", resp.ShortenUrl)
 }
