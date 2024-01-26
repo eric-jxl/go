@@ -18,6 +18,7 @@ func formatAsDate(t time.Time) string {
 
 func main() {
 	//r := gin.New()
+	gin.SetMode(gin.TestMode)
 	r := gin.Default()
 	r.Use(response.Exception())
 	//_ = r.SetTrustedProxies([]string{"192.168.1.15:7890"})
