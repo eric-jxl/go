@@ -41,9 +41,9 @@ type Person struct {
 	Addr string `json:"addr,omitempty"`
 }
 
-//New returns a new hash.Hash computing the MD5 checksum. The Hash also
-//implements encoding.BinaryMarshaler and encoding.BinaryUnmarshaler to
-//marshal and unmarshal the internal state of the hash.
+// New returns a new hash.Hash computing the MD5 checksum. The Hash also
+// implements encoding.BinaryMarshaler and encoding.BinaryUnmarshaler to
+// marshal and unmarshal the internal state of the hash.
 func md5encrypt() {
 	//假设用户名 abc，密码 123456
 	h := md5.New()
@@ -183,24 +183,23 @@ func main() {
 	//var ct = []string{"AAAAA\n","AAAAA\n","AAAAA\n"}
 	//unit.BufferWFile(ct,"a.txt")
 	unit.GetIp()
-	source := []string{"Apple","Orange","Plum","Banana","Grape"}
+	source := []string{"Apple", "Orange", "Plum", "Banana", "Grape"}
 	sort.Strings(source)
 	slice := source[2:3:3]
-	slice= append( slice,"Kiwi")
+	slice = append(slice, "Kiwi")
 	//fmt.Println(append(source,slice...))
 	//fmt.Println(removeDuplicateElement(source))
-	array :=[3] *string{new(string),new(string),new(string)}
+	array := [3]*string{new(string), new(string), new(string)}
 	*array[0] = "Red"
 	fmt.Println(*array[0])
-	a := make(chan int,10)
+	a := make(chan int, 10)
 	a <- 10
 	defer close(a)
-	fmt.Printf("%v\n",<-a)
+	fmt.Printf("%v\n", <-a)
 
 }
 
-
-//removeDuplicateElement：删除切片重复元素
+// removeDuplicateElement：删除切片重复元素
 func removeDuplicateElement(elements []string) []string {
 	result := make([]string, 0, len(elements))
 	temp := map[string]struct{}{}

@@ -5,11 +5,11 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 )
 
-const appKey = ""
+const appKey = "e6a0d40abd02adbeb1105c4d757a6284"
 
 type PhoneStruct struct {
 	Code   string `json:"code"`
@@ -37,17 +37,20 @@ func request_jdApi(phone string) error {
 		return err
 	}
 	defer resp.Body.Close()
-	bd, _ := ioutil.ReadAll(resp.Body)
+	bd, _ := io.ReadAll(resp.Body)
 	var phones PhoneStruct
 	_ = json.Unmarshal(bd, &phones)
 	var out bytes.Buffer
 	ps, _ := json.Marshal(phones.Result)
-	json.Indent(&out, ps, " ", "\t")
+	_ = json.Indent(&out, ps, " ", "\t")
 	fmt.Printf("手机归属地：%v\n", out.String())
 	return nil
 }
 func main() {
 	phone := flag.String("p", "", "Usage phone number")
 	flag.Parse()
-	request_jdApi(*phone)
+	err := request_jdApi(*phone)
+	if err != nil {
+		return
+	}
 }
