@@ -2,10 +2,15 @@ name: build-go-binary
 
 on:
   release:
-    types: [ created,published ] # 表示在创建新的 Release 时触发
+    types: [ created] # 表示在创建新的 Release 时触发
+    
+permissions:
+    contents: write
+    packages: write
 
 jobs:
   build-go-binary:
+    name: build release binary
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -15,14 +20,14 @@ jobs:
           - goarch: arm64
             goos: windows
     steps:
-      - uses: actions/checkout@v3
-      - uses: wangyoucao577/go-release-action@v1.30
+      - uses: actions/checkout@v4
+      - uses: wangyoucao577/go-release-action@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }} # 一个默认的变量，用来实现往 Release 中添加文件
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           goos: ${{ matrix.goos }}
           goarch: ${{ matrix.goarch }}
-          goversion: 1.21 # 可以指定编译使用的 Golang 版本
-          binary_name: "chatgpt-dingtalk" # 可以指定二进制文件的名称
+          goversion: 1.21         # 可以指定编译使用的 Golang 版本
+          binary_name: "amap"     # 可以指定二进制文件的名称
           project_path: "./weather/main.go"
           ldflags: "-s -w"
-          # extra_files: README.md # 需要包含的额外文件
+          # extra_files: README.md   # 需要包含的额外文件
