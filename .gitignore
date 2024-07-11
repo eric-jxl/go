@@ -30,3 +30,4 @@
 *.out
 go.sum
 /bin
+/cmd

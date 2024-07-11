@@ -1,6 +1,7 @@
 package main
 
 import (
+	_ "embed"
 	"fmt"
 	"html/template"
 	"net/http"
@@ -15,6 +16,9 @@ func formatAsDate(t time.Time) string {
 	hour, min, sec := t.Clock()
 	return fmt.Sprintf("%d/%02d/%02d %d:%d:%02d", year, month, day, hour, min, sec)
 }
+
+//go:embed sub.go
+var content string
 
 func main() {
 	//r := gin.New()
@@ -46,6 +50,10 @@ func main() {
 			"title": "Eric",
 			"Unix":  time.Now(),
 		})
+	})
+
+	r.GET("/img", func(c *gin.Context) {
+		response.Success(c, content)
 	})
 	_ = r.Run(":8888") // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 }
