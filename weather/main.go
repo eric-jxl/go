@@ -10,7 +10,7 @@ import (
 var S *string
 
 func init() {
-	S = flag.String("w", "苏州", "输入要查询天气的城市!")
+	S = flag.String("w", "上海", "输入要查询天气的城市!")
 	flag.Parse()
 }
 func main() {
