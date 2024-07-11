@@ -14,7 +14,7 @@
 *.ipa
 *.tx
 *.vscode
-*.github
+#*.github
 /configs
 # Binaries for programs and plugins
 *.exe~
