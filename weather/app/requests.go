@@ -19,7 +19,7 @@ func New() (*ShortDao, error) {
 // GetCityWeather 获取目标城市天气
 // city 城市编码
 func (dao *ShortDao) GetCityWeather(location string) (string, error) {
-	var key = "b2686a93704585e84ec0169f5a1534f6" //高德地图key密钥
+	var key = "xxxxxx" //高德地图key密钥
 	var urls = fmt.Sprintf("https://restapi.amap.com/v3/weather/weatherInfo?key=%s&output=json&city=%s", key, location)
 	resp, err := http.Get(urls)
 	if err != nil {
