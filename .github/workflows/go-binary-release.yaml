@@ -31,3 +31,5 @@ jobs:
           project_path: "./weather"
           ldflags: "-s -w"
           # extra_files: README.md   # 需要包含的额外文件
+        env:
+          AMAP_KEY: ${{ secrets.AMAP_KEY}}
