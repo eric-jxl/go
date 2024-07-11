@@ -30,6 +30,5 @@ jobs:
           binary_name: "amap"     # 可以指定二进制文件的名称
           project_path: "./weather"
           ldflags: "-s -w"
+          pre_command: "export AMAP_KEY=${{ secrets.AMAP_KEY}}"
           # extra_files: README.md   # 需要包含的额外文件
-        env:
-          AMAP_KEY: ${{ secrets.AMAP_KEY}}
