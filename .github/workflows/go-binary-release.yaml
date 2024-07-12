@@ -10,7 +10,6 @@ permissions:
 
 jobs:
   build-go-binary:
-    name: build release binary
     runs-on: ubuntu-latest
     strategy:
       matrix:
