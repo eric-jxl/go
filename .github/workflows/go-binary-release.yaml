@@ -34,5 +34,5 @@ jobs:
           pre_command: "export AMAP_KEY=${{ secrets.AMAP_KEY}}"
           # extra_files: README.md   # 需要包含的额外文件
           executable_compression: upx -v
-          md5sum: FALSE
+          md5sum: false
           
