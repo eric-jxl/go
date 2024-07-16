@@ -36,7 +36,7 @@ func main() {
 	})
 
 	r.GET("/error", func(c *gin.Context) {
-		response.Fail(c, http.StatusBadRequest, "参数错误")
+		response.Fatal(c, "参数错误")
 	})
 
 	r.SetFuncMap(template.FuncMap{
@@ -55,5 +55,14 @@ func main() {
 	r.GET("/img", func(c *gin.Context) {
 		response.Success(c, content)
 	})
+	api := r.Group("/api")
+
+	api.GET("/v1", func(c *gin.Context) {
+		response.Success(c, "v1")
+	})
+	api.GET("/img", func(c *gin.Context) {
+		response.Success(c, content)
+	})
+
 	_ = r.Run(":8888") // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 }

@@ -2,7 +2,9 @@ name: build-go-binary
 
 on:
   release:
-    types: [ created ] # 表示在创建新的 Release 时触发
+    types: [ created, published ]
+  push:
+    tags: [v*] # 表示在推送带有 v 前缀的 tag 时触发
 
 permissions:
   contents: write

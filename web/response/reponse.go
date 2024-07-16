@@ -21,15 +21,19 @@ func Success(c *gin.Context, data interface{}) {
 	RespJson(c, http.StatusOK, "操作成功", data)
 }
 
-func Fail(c *gin.Context, code int, message string) {
+func ERROR(c *gin.Context, code int, message string) {
 	RespJson(c, code, message, nil)
+}
+
+func Fatal(c *gin.Context, message string) {
+	RespJson(c, http.StatusInternalServerError, message, nil)
 }
 
 func Exception() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		defer func() {
 			if r := recover(); r != nil {
-				Fail(c, http.StatusInternalServerError, "服务器错误")
+				ERROR(c, http.StatusInternalServerError, "服务器错误")
 			}
 		}()
 		c.Next()
