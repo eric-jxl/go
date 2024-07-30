@@ -12,12 +12,12 @@ body:
     attributes:
       label: Please make sure of the following things
       description: |
-        You must check all the following, otherwise your issue may be closed directly. Or you can go to the [discussions](https://github.com/alist-org/alist/discussions)
-        您必须勾选以下所有内容，否则您的issue可能会被直接关闭。或者您可以去[讨论区](https://github.com/alist-org/alist/discussions)
+        You must check all the following, otherwise your issue may be closed directly. Or you can go to the [discussions](https://github.com/eric-jxl/go/discussions)
+        您必须勾选以下所有内容，否则您的issue可能会被直接关闭。或者您可以去[讨论区](https://github.com/eric-jxl/go/discussions)
       options:
         - label: |
-            I have read the [documentation](https://alist.nn.ci).
-            我已经阅读了[文档](https://alist.nn.ci)。
+            I have read the documentation.
+            我已经阅读了文档。
         - label: |
             I'm sure there are no duplicate issues or discussions.
             我确定没有重复的issue或讨论。
