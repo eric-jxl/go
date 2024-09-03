@@ -1,0 +1,60 @@
+version: '3.4'
+
+services:
+  gateway:
+    image: ghcr.io/wzshiming/nginx-certbot:v1.21.4
+    container_name: gateway
+    restart: unless-stopped
+    volumes:
+      - ./nginx/:/etc/nginx/conf.d/
+      - ./certbot/conf/:/etc/letsencrypt/
+      - ./certbot/www/:/var/www/certbot/
+      - ./html:/usr/share/nginx/html
+      - ./log/nginx/:/var/log/nginx/
+      - ./log/letsencrypt:/var/log/letsencrypt/
+    ports:
+      - "80:80"
+      - "443:443"
+
+  #  registry:
+  #    image: docker.io/library/registry:2.8.1
+  #    container_name: registry
+  #    restart: unless-stopped
+  #    command:
+  #      - registry
+  #      - serve
+  #      - /etc/docker/registry/config.yml
+  #    volumes:
+  #      - ./registry:/var/lib/registry:rw
+  #      - ./registry/config.yml:/etc/docker/registry/config.yml:ro
+
+  crproxy:
+    image: ghcr.io/daocloud/crproxy/crproxy:v0.9.1
+    container_name: crproxy
+    restart: unless-stopped
+  # command: |
+  #   # add docker.io username increase pulls from 100 to 200  per 6 hour period
+  #   -u username:password@docker.io
+  #   # support ignoring prefixes, e.g. docker pull mysql
+  #   --default-registry docker.io
+  #   # cache storage example: aliyunoss
+  #   --storage-driver oss
+  #   --storage-parameters accesskeyid=xxxxx,accesskeysecret=xxxxxxx,region=oss-ap-xxxx-1,encrypt=true,bucket=xxxx
+  #   # user
+  #   --simple-auth
+  #   --simple-auth-user user1=pass1
+  #   --simple-auth-user user2=pass2
+
+  ## For crproxy via a proxy
+
+  #   environment:
+  #     - https_proxy=http://proxy:8080
+  #     - http_proxy=http://proxy:8080
+
+  # proxy:
+  #   image: ghcr.io/wzshiming/bridge/bridge:v0.8.6
+  #   container_name: proxy
+  #   restart: unless-stopped
+  #   ports:
+  #     - 8080:8080
+  #   command: -b :8080 -p -
