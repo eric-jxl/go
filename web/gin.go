@@ -4,9 +4,11 @@ import (
 	_ "embed"
 	"fmt"
 	"html/template"
+	"log"
 	"net/http"
 	"time"
 
+	"github.com/eric-jxl/go/web/middleware"
 	"github.com/eric-jxl/go/web/response"
 	"github.com/gin-gonic/gin"
 )
@@ -55,14 +57,42 @@ func main() {
 	r.GET("/img", func(c *gin.Context) {
 		response.Success(c, content)
 	})
+	r.Use(middleware.Logger())
 	api := r.Group("/api")
+	{
+		api.GET("/v1", func(c *gin.Context) {
+			response.Success(c, "v1")
+		})
+		api.GET("/img", func(c *gin.Context) {
+			response.Success(c, content)
+		})
+		api.GET("/user/:name/*action", func(c *gin.Context) {
+			name := c.Param("name")
+			action := c.Param("action")
+			message := name + " is " + action
+			c.String(http.StatusOK, message)
+		})
+		api.GET("/cookie", func(c *gin.Context) {
+			cookie, err := c.Cookie("gin_cookie")
+			if err != nil {
+				cookie = "NotSet"
+				c.SetCookie("gin_cookie", "test", 3600, "/", "localhost", false, true)
+			}
 
-	api.GET("/v1", func(c *gin.Context) {
-		response.Success(c, "v1")
-	})
-	api.GET("/img", func(c *gin.Context) {
-		response.Success(c, content)
-	})
+			fmt.Printf("Cookie value: %s \n", cookie)
+		})
 
-	_ = r.Run(":8888") // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
+		r.MaxMultipartMemory = 8 << 20 // 8 MiB
+		r.POST("/upload", func(c *gin.Context) {
+			// 单文件
+			file, _ := c.FormFile("file")
+			log.Println(file.Filename)
+			dst := "./" + file.Filename
+			// 上传文件至指定的完整文件路径
+			c.SaveUploadedFile(file, dst)
+			c.String(http.StatusOK, fmt.Sprintf("'%s' uploaded!\n", file.Filename))
+		})
+	}
+
+	_ = r.Run(":8999") // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 }
